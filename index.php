@@ -22,32 +22,42 @@
     <link rel="stylesheet" href="./assets/css/bootstrap-datetimepicker.min.css" />
     <script type="text/javascript" src="./assets/js/moment.min.js"></script>
     <script type="text/javascript" src="./assets/js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <script src="./assets/js/jquery.ui.widget.js"></script>
+    <script src="./assets/js/jquery.iframe-transport.js"></script>
+    <script src="./assets/js/jquery.fileupload.js"></script>
+
+
+    <link rel="stylesheet" href="./assets/css/template.css">
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="alert alert-success" role="alert">
+        <div class="row text-center">
+            <!--<div class="alert alert-success" role="alert">
                 CCTV Quote Questions
-            </div>
+            </div>-->
+            <h2 class="sppb-addon-title">CCTV Quote Questions</h2>
+            <div id="sppb-addon-1511076922229" class="clearfix"><div class="sppb-addon sppb-addon-single-image sppb-text-center "><div class="sppb-addon-content"><div class="sppb-addon-single-image-container"><img class="sppb-img-responsive" src="assets/img/divider2.png" alt="divider2.png" style="margin: 0 auto;" title=""></div></div></div></div>
         </div>
         <div class="row">
             <div class="col-sm-8">
                 <div class="row">
-                    <form role="form" class="form-horizontal">
+                    <form role="form" id="cctv-form" class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <label>First name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="First">
+                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First">
                             </div>
                             <div class="col-sm-6">
                                 <label>Last name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Last">
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-12" for="companyField">Company (optional)</label>
                             <div class="col-sm-12">
-                                <input type="email" class="form-control" id="companyField" placeholder="Company name (optional)">
+                                <input type="email" class="form-control" name="companyField" id="companyField" placeholder="Company name (optional)">
                             </div>
                         </div>
                         <div class="form-group">
@@ -82,7 +92,7 @@
                         <div class="form-group">
                             <label class="col-sm-12" for="emailField">Email Address</label>
                             <div class="col-sm-12">
-                                <input type="email" class="form-control" id="emailField" placeholder="Email">
+                                <input type="email" class="form-control" name="emailField" id="emailField" placeholder="Email">
                             </div>
                         </div>
                         
@@ -149,13 +159,13 @@
                             </div>
                         </div>
         
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <div class="btn-group col-sm-12" role="group">
                                 <button type="button" class="btn btn-default">Indoor</button>
                                 <button type="button" class="btn btn-default">Outdoor</button>
                                 <button type="button" class="btn btn-default">Both</button>
                             </div>
-                        </div>
+                        </div>-->
         
                         <div class="form-group">
                             <label class="col-sm-12" for="camerasField">How many cameras</label>
@@ -369,12 +379,22 @@
                             </div>
                         </div>
         
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="col-sm-12" for="uploadFile">Pics of location</label>
                             <div class="col-sm-12">
                                 <input type="file" id="uploadFile">
                             </div>
+                        </div>-->
+
+                        <div class="form-group">
+                            <label class="col-sm-12" for="uploadFile">Pics of location</label>
+                            <div class="col-sm-12">
+                                <input id="fileupload" type="file" name="files[]" data-url="server/" multiple>
+                                <ul id="fileList"></ul>
+                                <div id="fileListHidden" style="display:none"></div>
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <label class="col-sm-12" for="TextArea">Any Additional Information</label>
                             <div class="col-sm-12">
@@ -382,7 +402,7 @@
                             </div>
                         </div>
         
-                        <button type="submit" type="button" class="btn btn-default">Submit or ?</button>
+                        <button type="button" id="submitButton" class="btn btn-default">Submit</button>
                     </form>
                 </div>
             
