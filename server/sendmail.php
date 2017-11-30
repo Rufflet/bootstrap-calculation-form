@@ -1,19 +1,62 @@
 <?php 
-if(isset($_POST['emailField'])){
+if(isset($_POST['emailfield'])){
     $to = 'mail@mail.com';
-    $from = $_POST['emailField'];
-    $first_name = $_POST['firstName'];
-    $last_name = $_POST['lastlastName_name'];
-    $subject = "Form submission";
-    $subject2 = "Copy of your form submission";
-    $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['companyField'];
-    $message2 = "Here is a copy of your message " . $first_name . "\n\n" . $_POST['companyField'];
-
+    $from = $_POST['emailfield'];
+    $subject = "CCTV Quote Questions";
     $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
+
+    
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['firstname'];
+    $companyfield = $_POST['companyfield'];
+    $phonenum = $_POST['phonenum'];
+    $phoneext = $_POST['phoneext'];
+    $emailfield = $_POST['emailfield'];
+    $preferredcontact = $_POST['preferredcontact'];
+    $locationtype = $_POST['locationtype'];
+    $locationmaterial = $_POST['locationmaterial'];
+    $inoutdoor = $_POST['inoutdoor'];
+    $cameras = $_POST['cameras'];
+    $camerasquality = $_POST['camerasquality'];
+    $daysofrec = $_POST['daysofrec'];
+    $monitorneeded = $_POST['monitorneeded'];
+    $monitorsize = $_POST['monitorsize'];
+    $mountedon = $_POST['mountedon'];
+    $internetconnection = $_POST['internetconnection'];
+    $planinternetconnection = $_POST['planinternetconnection'];
+    $internetconnectiontype = $_POST['internetconnectiontype'];
+    $installationdate = $_POST['installationdate'];
+    $dateandtime = $_POST['dateandtime'];
+    $features = $_POST['features'];
+    $f = count($features);
+    for($i=0; $i < $f; $i++)
+    {
+      echo($features[$i] . " checkbox ");
+    }
+
+    $files = $_POST['files'];
+    $f = count($files);
+    for($i=0; $i < $f; $i++)
+    {
+      echo($files[$i] . " ");
+    }
+
+    $additionalinfo = $_POST['additionalinfo'];
+
+
+    $message = $firstname . " " . $lastname . "\n" .
+    $companyfield . " " . $phonenum . "\n" .
+    $phoneext . " " . $emailfield . "\n" .
+    $preferredcontact . " " . $locationtype . "\n" .
+    $locationmaterial . " " . $inoutdoor . "\n" .
+    $cameras . " " . $camerasquality . "\n" .
+    $daysofrec . " " . $monitorneeded . "\n" .
+    $monitorsize . " " . $mountedon . "\n" .
+    $internetconnection . " " . $planinternetconnection . "\n" .
+    $internetconnectiontype . " " . $installationdate . "\n" .
+    $dateandtime . " " . $features . "\n" .
+    $files . " " . $additionalinfo;
+
     mail($to,$subject,$message,$headers);
-    //mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
-    // You can also use header('Location: thank_you.php'); to redirect to another page.
     }
 ?>

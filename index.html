@@ -23,11 +23,11 @@
     <script type="text/javascript" src="./assets/js/moment.min.js"></script>
     <script type="text/javascript" src="./assets/js/bootstrap-datetimepicker.min.js"></script>
 
-
     <script src="./assets/js/jquery.ui.widget.js"></script>
     <script src="./assets/js/jquery.iframe-transport.js"></script>
     <script src="./assets/js/jquery.fileupload.js"></script>
-
+    <script src="./assets/js/jquery.fileupload-process.js"></script>
+    <script src="./assets/js/jquery.fileupload-validate.js"></script>
 
     <link rel="stylesheet" href="./assets/css/template.css">
 </head>
@@ -47,63 +47,34 @@
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <label>First name</label>
-                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First">
+                                <input type="text" class="form-control" name="firstname" placeholder="First name">
                             </div>
                             <div class="col-sm-6">
                                 <label>Last name</label>
-                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last">
+                                <input type="text" class="form-control" name="lastname" placeholder="Last name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-12" for="companyField">Company (optional)</label>
+                            <label class="col-sm-12" for="companyfield">Company (optional)</label>
                             <div class="col-sm-12">
-                                <input type="email" class="form-control" name="companyField" id="companyField" placeholder="Company name (optional)">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-12">Phone number</label>
-                            <div class="col-sm-1">
-                                <input type="text" class="form-control" placeholder="000">
-                                <span class="help-block">area</span>
-                            </div>
-                            <div class="col-sm-1">
-                                <input type="text" class="form-control" placeholder="000">
-                                <span class="help-block">local</span>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" placeholder="1111">
-                                <span class="help-block">number</span>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" placeholder="123">
-                                <span class="help-block">ext</span>
+                                <input type="email" class="form-control" name="companyfield" placeholder="Company name (optional)">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-12">Phone number</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" placeholder="+1 XXX XXX XXXX">
+                                <input type="text" class="form-control" name="phonenum" placeholder="+1 XXX XXX XXXX">
                             </div>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" placeholder="ext">
+                                <input type="text" class="form-control" name="phoneext" placeholder="ext">
                             </div>
                         </div>
         
                         <div class="form-group">
-                            <label class="col-sm-12" for="emailField">Email Address</label>
+                            <label class="col-sm-12" for="emailfield">Email Address*</label>
                             <div class="col-sm-12">
-                                <input type="email" class="form-control" name="emailField" id="emailField" placeholder="Email">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="col-sm-12" for="contactMethodField">Preferred method of contact</label>
-                            <div class="col-sm-12">
-                                <select class="form-control" id="contactMethodField" >
-                                    <option>Choose one</option>
-                                    <option>Email</option>
-                                    <option>Phone</option>
-                                </select>
+                                <input type="email" class="form-control" name="emailfield" placeholder="Email (required)">
+                                <span id="emailfield-help" class="help-block" style="display:none;">Wrong E-mail format!</span>
                             </div>
                         </div>
                         
@@ -111,18 +82,18 @@
                             <div class="col-sm-12">
                                 <label style="padding-left: 0; font-weight: bold; vertical-align: middle; padding-top: 7px; margin: 0 10px 0 0;">Preferred method of contact</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineCheckbox1" value="option1">Email
+                                    <input type="radio" name="preferredcontact" value="email">Email
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineCheckbox2" value="option2">Phone
+                                    <input type="radio" name="preferredcontact" value="phone">Phone
                                 </label>
                             </div>
                         </div>
         
                         <div class="form-group">
-                            <label class="col-sm-12" for="locationTypeField">Type of location</label>
+                            <label class="col-sm-12">Type of location</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="locationTypeField" >
+                                <select class="form-control" name="locationtype">
                                     <option value="0">Choose one</option>
                                     <option value="1">Residential/Home</option>
                                     <option value="2">Commercial/Business</option>
@@ -132,15 +103,15 @@
                         </div>
         
                         <div class="form-group">
-                            <label class="col-sm-12" for="locationMaterialField">Location material</label>
+                            <label class="col-sm-12">Location material</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="locationMaterialField" >
+                                <select class="form-control" name="locationmaterial" >
                                     <option value="0">Choose one</option>
-                                    <option value="1">Drywall</option>
-                                    <option value="2">Brick</option>
-                                    <option value="3">Concrete</option>
-                                    <option value="4">Other</option>
-                                    <option value="5">I dont know</option>
+                                    <option>Drywall</option>
+                                    <option>Brick</option>
+                                    <option>Concrete</option>
+                                    <option>Other</option>
+                                    <option>I dont know</option>
                                 </select>
                             </div>
                         </div>
@@ -156,21 +127,15 @@
                                 <div class="btn-group" role="group">
                                     <button type="button" id="bothButton" class="btn btn-default">Both</button>
                                 </div>
+                                <input type="hidden" name="inoutdoor">
                             </div>
                         </div>
         
-                        <!--<div class="form-group">
-                            <div class="btn-group col-sm-12" role="group">
-                                <button type="button" class="btn btn-default">Indoor</button>
-                                <button type="button" class="btn btn-default">Outdoor</button>
-                                <button type="button" class="btn btn-default">Both</button>
-                            </div>
-                        </div>-->
         
                         <div class="form-group">
-                            <label class="col-sm-12" for="camerasField">How many cameras</label>
+                            <label class="col-sm-12">How many cameras</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="camerasField" >
+                                <select class="form-control" name="cameras" >
                                     <option value="0">Choose one</option>
                                     <option value="1">1-4</option>
                                     <option value="2">5-8</option>
@@ -183,9 +148,9 @@
                         </div>
         
                         <div class="form-group">
-                            <label class="col-sm-12" for="camerasQualityField">Quality of cameras</label>
+                            <label class="col-sm-12">Quality of cameras</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="camerasQualityField" >
+                                <select class="form-control" name="camerasquality" >
                                     <option value="0">Choose one</option>
                                     <option value="1">Good</option>
                                     <option value="2">Better</option>
@@ -195,9 +160,9 @@
                         </div>
         
                         <div class="form-group">
-                            <label class="col-sm-12" for="daysOfRecField">How many days of recording</label>
+                            <label class="col-sm-12">How many days of recording</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="daysOfRecField" >
+                                <select class="form-control" name="daysofrec" >
                                     <option value="0">Choose one</option>
                                     <option value="1">1 day</option>
                                     <option value="2">1 week</option>
@@ -212,10 +177,10 @@
                             <div class="col-sm-12" id="monitorSelected">
                                 <label style="padding-left: 0; font-weight: bold; vertical-align: middle; padding-top: 7px; margin: 0 10px 0 0;">Monitor needed to view cameras?</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="monitorSelectedYes" value="yes">Yes
+                                    <input type="radio" name="monitorneeded" value="yes">Yes
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="monitorSelectedNo" value="no">No
+                                    <input type="radio" name="monitorneeded" value="no">No
                                 </label>
                             </div>
                         </div>
@@ -224,7 +189,7 @@
                             <div class="form-group" id="monitorSizeBlock" style="display:none;">
                                 <label class="col-sm-12" for="monitorSizeField">Monitor Size</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control" id="monitorSizeField" >
+                                    <select class="form-control" name="monitorsize" >
                                         <option value="0">Choose one</option>
                                         <option value="1">Small portable 7 inch</option>
                                         <option value="2">19 inch</option>
@@ -236,9 +201,9 @@
                             </div>
                             
                             <div class="form-group" id="mountedBlock" style="display:none;">
-                                <label class="col-sm-12" for="mountedField">Mounted on</label>
+                                <label class="col-sm-12">Mounted on</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control" id="mountedField" >
+                                    <select class="form-control" name="mountedon" >
                                         <option value="0">Choose one</option>
                                         <option value="1">wall</option>
                                         <option value="2">ceiling</option>
@@ -252,10 +217,10 @@
                             <div class="col-sm-12" id="inetConnection">
                                 <label style="padding-left: 0; font-weight: bold; vertical-align: middle; padding-top: 7px; margin: 0 10px 0 0;">Do you have internet connection?</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inetConnectionSelectedYes" value="yes">Yes
+                                    <input type="radio" name="internetconnection" value="yes">Yes
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inetConnectionSelectedNo" value="no">No
+                                    <input type="radio" name="internetconnection" value="no">No
                                 </label>
                             </div>
                         </div>
@@ -265,10 +230,10 @@
                                 <div class="col-sm-12" id="planToHaveConnection">
                                     <label style="padding-left: 0; font-weight: bold; vertical-align: middle; padding-top: 7px; margin: 0 10px 0 0;">Do you plan on having Internet connection by install date?</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="inlineRadioOptions" id="planToHaveConnectionSelectedYes" value="yes">Yes
+                                        <input type="radio" name="planinternetconnection" value="yes">Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="inlineRadioOptions" id="planToHaveConnectionSelectedNo" value="no">No
+                                        <input type="radio" name="planinternetconnection" value="no">No
                                     </label>
                                 </div>
                             </div>
@@ -276,15 +241,15 @@
                             
                             <!-- start IF YES -->
                             <div class="form-group" id="inetTypeBlock" style="display:none;">
-                                <label class="col-sm-12" for="inetTypeField">What type of internet?</label>
+                                <label class="col-sm-12">What type of internet?</label>
                                 <div class="col-sm-12">
-                                    <select class="form-control" id="inetTypeField" >
+                                    <select class="form-control" name="internetconnectiontype">
                                         <option value="0">Choose one</option>
-                                        <option value="1">DSL</option>
-                                        <option value="2">CABLE</option>
-                                        <option value="3">FIOS</option>
-                                        <option value="4">I dont know</option>
-                                        <option value="5">No internet connection</option>
+                                        <option>DSL</option>
+                                        <option>CABLE</option>
+                                        <option>FIOS</option>
+                                        <option>I dont know</option>
+                                        <option>No internet connection</option>
                                     </select>
                                     <span class="help-block">Internet is needed to view with mobile devices or computer.</span>
                                 </div>
@@ -292,9 +257,9 @@
                             <!-- end IF YES -->
                         
                         <div class="form-group">
-                            <label class="col-sm-12" for="installDateField">Installation date</label>
+                            <label class="col-sm-12">Installation date</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="installDateField" >
+                                <select class="form-control" name="installationdate">
                                     <option value="0">Choose one</option>
                                     <option value="1">Within 72 hours (Extra fees apply)</option>
                                     <option value="2">within 7 business days</option>
@@ -305,13 +270,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-12" for="installDateField">Please choose date and time</label>
+                            <label class="col-sm-12">Please choose date and time</label>
                             <div class="col-sm-12">
                                 <div class="input-group date" id="datetimepicker">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
-                                    <input type="text" class="form-control" placeholder="Choose date and time"/>
+                                    <input type="text" class="form-control" name="dateandtime" placeholder="Choose date and time"/>
                                 </div>
                             </div>
                         </div>
@@ -322,69 +287,60 @@
                         </script>
 
                         <div class="form-group">
-                            <label class="col-sm-12" for="smth">Checklist of additional features</label>
+                            <label class="col-sm-12">Checklist of additional features</label>
                             <div class="col-sm-12">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Mic to listen
+                                        <input type="checkbox" name="features[]">Color display
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Pan, til, zoom, rotation
+                                        <input type="checkbox" name="features[]">Mic to listen
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Night vision
+                                        <input type="checkbox" name="features[]">Pan, til, zoom, rotation
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Motion detector
+                                        <input type="checkbox" name="features[]">Night vision
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Speaker to speak
+                                        <input type="checkbox" name="features[]">Motion detector
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Wireless
+                                        <input type="checkbox" name="features[]">Speaker to speak
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Hidden
+                                        <input type="checkbox" name="features[]">Wireless
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">License plate recognition
+                                        <input type="checkbox" name="features[]">Hidden
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Dummy NON working - No internet connection required
+                                        <input type="checkbox" name="features[]">License plate recognition
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="features[]">Dummy NON working - No internet connection required
                                     </label>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-12">Color</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Color">
-                            </div>
-                        </div>
-        
-                        <!--<div class="form-group">
-                            <label class="col-sm-12" for="uploadFile">Pics of location</label>
-                            <div class="col-sm-12">
-                                <input type="file" id="uploadFile">
-                            </div>
-                        </div>-->
 
                         <div class="form-group">
                             <label class="col-sm-12" for="uploadFile">Pics of location</label>
@@ -396,9 +352,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-12" for="TextArea">Any Additional Information</label>
+                            <label class="col-sm-12">Any Additional Information</label>
                             <div class="col-sm-12">
-                                <textarea class="form-control" id="TextArea"></textarea>
+                                <textarea class="form-control" name="additionalinfo"></textarea>
                             </div>
                         </div>
         
